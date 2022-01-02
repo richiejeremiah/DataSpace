@@ -73,7 +73,7 @@ def show_predict_page():
     )
 
     form = st.form("my_form")
-    name = form.text_input("Student name")
+    name = form.text_input("Full name")
     Months = form.number_input("Month", min_value=1, max_value=12)
     Onset = form.number_input("Onset of Disease", min_value=0, max_value=14)
     
