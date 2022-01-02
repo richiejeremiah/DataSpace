@@ -30,9 +30,9 @@ def show_predict_page():
 
     st.title("Patient Triage")
     
-    st.write("""##### Streamling the patient intake process by enabling quick triage and data collection while obtaining consent for data usage.""")  
+    st.write("""##### This simple tool delivers precision healthcare for patients by asking relevant questions to assist in clinical decision making. The information is later provided to clinicians via institutional forms to streamline practice workflow, reducing time and costs related to data collection.""")  
 
-    st.markdown('Kindly fill in details of your clinical case for analysis')
+    st.markdown('Kindly fill in your information')
    
     months = (
         "January",
