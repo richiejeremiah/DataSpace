@@ -72,20 +72,22 @@ def show_predict_page():
         "No"
     )
 
-    Months = st.number_input("Month", min_value=1, max_value=12)
-    Onset = st.number_input("Onset of Disease", min_value=0, max_value=14)
+    form = st.form("my_form")
+    name = form.text_input("Student name")
+    Months = form.number_input("Month", min_value=1, max_value=12)
+    Onset = form.number_input("Onset of Disease", min_value=0, max_value=14)
     
-    Sex = st.selectbox("Sex", Sex)
-    Hotness_of_Body = st.selectbox("Hotness of Body", Hotness_of_Body)
-    Dehydration = st.selectbox("Dehydration", Dehydration)
-    Chestwall_Indrawing = st.selectbox("Chestwall Indrawing", Chestwall_Indrawing)
-    Vomiting = st.selectbox("Vomiting", Vomiting)
-    SickLooking = st.selectbox("SickLooking", SickLooking)
+    Sex = form.selectbox("Sex", Sex)
+    Hotness_of_Body = form.selectbox("Hotness of Body", Hotness_of_Body)
+    Dehydration = form.selectbox("Dehydration", Dehydration)
+    Chestwall_Indrawing = form.selectbox("Chestwall Indrawing", Chestwall_Indrawing)
+    Vomiting = form.selectbox("Vomiting", Vomiting)
+    SickLooking = form.selectbox("SickLooking", SickLooking)
 
-    Age = st.slider("Age", 0, 18, 3)
-    Temperature = st.slider("Temperature", 36.0, 40.0, 36.9)
+    Age = form.slider("Age", 0, 18, 3)
+    Temperature = form.slider("Temperature", 36.0, 40.0, 36.9)
 
-    ok = st.button("Submit")
+    ok = form.form_submit_button("Submit")
     if ok:
         x = np.array([[Age,Sex,Hotness_of_Body,Dehydration,Chestwall_Indrawing,Vomiting,SickLooking,Temperature,Months,Onset]])
         x[:, 1] = le_sex.transform(x[:,1])
