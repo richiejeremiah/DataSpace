@@ -28,9 +28,9 @@ binarizer= data['binarizer']
 
 def show_predict_page():
 
-    st.title("Clinical Case Analysis")
+    st.title("Patient Triage")
     
-    st.write("""##### DataSpace's decision support tool assists physicians in making  real-time data driven decisions through the use of artificial intelligence technology.""")  
+    st.write("""##### Streamling the patient intake process by enabling quick triage and data collection while obtaining consent for data usage.""")  
 
     st.markdown('Kindly fill in details of your clinical case for analysis')
    
