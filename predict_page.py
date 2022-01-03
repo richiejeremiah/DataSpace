@@ -4,6 +4,10 @@ import numpy as np
 from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.preprocessing import MultiLabelBinarizer
 from numpy import array
+from datetime import date
+import pdfkit
+from streamlit.components.v1 import iframe
+from jinja2 import Environment, PackageLoader, select_autoescape, FileSystemLoader
 
 
 def load_model():
@@ -23,16 +27,16 @@ le_vomit=data['le_vomit']
 le_Sick=data['le_Sick']
 binarizer= data['binarizer']
 
-
-
+env = Environment(loader=FileSystemLoader("."), autoescape=select_autoescape())
+template = env.get_template("template.html")
 
 def show_predict_page():
 
-    st.title("Patient Triage")
+    st.title("Clinical Case Analysis")
     
-    st.write("""##### This simple tool delivers precision healthcare for patients by asking relevant questions to assist in clinical decision making. The information is later provided to clinicians via institutional forms to streamline practice workflow, reducing time and costs related to data collection.""")  
+    st.write("""##### DataSpace's decision support tool assists physicians in making  real-time data driven decisions through the use of artificial intelligence technology.""")  
 
-    st.markdown('Kindly fill in your information')
+    st.markdown('Kindly fill in details of your clinical case for analysis')
    
     months = (
         "January",
@@ -99,9 +103,30 @@ def show_predict_page():
         x = x.astype(float)        
 
 
-        y_pred= regressor_loaded.predict(x)
+        y_pred=regressor_loaded.predict(x)
         A = binarizer.inverse_transform(y_pred)
+        B= '\n'.join([str(x) for t in A for x in t])
         
-        st.subheader(f"Suspect: *{A}*")
-        
-        
+    agree = st.checkbox('I consent to providing my confidential patient information for research and planning purposes')
+    
+    if ok:
+        html = template.render(
+            date=date.today().strftime("%B %d, %Y"),
+            name =name,
+            age=Age,
+            sex=Sex,
+            diagnosis= B,
+            temperature=Temperature,
+            Onset=Onset,
+        )
+        pdf = pdfkit.from_string(html, False)
+
+        st.success("Form submitted!")
+        st.download_button(
+            "⬇️ Download PDF",
+            data=pdf,
+            file_name="Patient Form.pdf",
+            mime="application/octet-stream",
+        )
+
+       
