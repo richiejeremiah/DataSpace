@@ -83,7 +83,8 @@ def show_predict_page():
         x[:, 4] = le_CWI.transform(x[:,4])
         x[:, 5] = le_vomit.transform(x[:,5])
         x[:, 6] = le_Sick.transform(x[:,6])
-        x = x.astype(float)        
+        x = x.astype(float)    
+        
         y_pred= regressor_loaded.predict(x)
         A = binarizer.inverse_transform(y_pred)
         
