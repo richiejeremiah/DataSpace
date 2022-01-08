@@ -87,5 +87,6 @@ def show_predict_page():
         
         y_pred= regressor_loaded.predict(x)
         A = binarizer.inverse_transform(y_pred)
+        B= '\n'.join([str(x) for t in A for x in t])
         
-        st.subheader(f"Suspect: *{A}*")
+        st.subheader(f"Suspect: *{B}*")
