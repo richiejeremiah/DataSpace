@@ -70,14 +70,14 @@ def show_predict_page():
     Chestwall_Indrawing = st.selectbox("Chestwall Indrawing", Chestwall_Indrawing)
     Vomiting = st.selectbox("Vomiting", Vomiting)
     SickLooking = st.selectbox("SickLooking", SickLooking)
-     Age = st.slider("Age", 0, 18, 3)
-     Temperature = st.slider("Temperature", 36.0, 40.0, 36.9)
+    Age = st.slider("Age", 0, 18, 3)
+    Temperature = st.slider("Temperature", 36.0, 40.0, 36.9)
 
-     ok = st.button(" Diagnosis")
-     ok = st.button("Submit")
-     if ok:
-         x = np.array([[Age,Sex,Hotness_of_Body,Dehydration,Chestwall_Indrawing,Vomiting,SickLooking,Temperature,Months,Onset]])
-         x[:, 1] = le_sex.transform(x[:,1])
+    ok = st.button(" Diagnosis")
+    ok = st.button("Submit")
+    if ok:
+        x = np.array([[Age,Sex,Hotness_of_Body,Dehydration,Chestwall_Indrawing,Vomiting,SickLooking,Temperature,Months,Onset]])
+        x[:, 1] = le_sex.transform(x[:,1])
         x[:, 2] = le_HOB.transform(x[:,2])
         x[:, 3] = le_Deh.transform(x[:,3])
         x[:, 4] = le_CWI.transform(x[:,4])
