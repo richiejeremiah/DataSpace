@@ -72,8 +72,7 @@ def show_predict_page():
     SickLooking = st.selectbox("SickLooking", SickLooking)
     Age = st.slider("Age", 0, 18, 3)
     Temperature = st.slider("Temperature", 36.0, 40.0, 36.9)
-
-    ok = st.button(" Diagnosis")
+    
     ok = st.button("Submit")
     if ok:
         x = np.array([[Age,Sex,Hotness_of_Body,Dehydration,Chestwall_Indrawing,Vomiting,SickLooking,Temperature,Months,Onset]])
