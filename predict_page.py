@@ -71,7 +71,7 @@ def show_predict_page():
     Vomiting = st.selectbox(" Is the patient vomiting", Vomiting)
     SickLooking = st.selectbox("Is the patient sicklooking?", SickLooking)
     Age = st.slider("What is the age of the patient?", 0, 18, 3)
-    Temperature = st.slider("What is the Temperature of the patient?", 36.0, 40.0, 36.9)
+    Temperature = st.slider("What is the temperature of the patient?", 36.0, 40.0, 36.9)
     
     ok = st.button("Submit")
     if ok:
