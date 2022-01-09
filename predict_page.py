@@ -21,7 +21,7 @@ binarizer= data['binarizer']
 def show_predict_page():
     st.title("Patient Triage")
     
-    st.write("""##### This simple tool delivers precision healthcare for patients by asking relevant questions to assist in clinical decision making. The information is later provided to clinicians via institutional forms to streamline practice workflow, reducing time and costs related to data collection.""")  
+    st.write("""##### This simple tool delivers precision healthcare for pediatiric oncological patients by asking relevant questions to assist clinicians in suspecting disease complications.""")  
     st.markdown('Kindly fill in your information')
    
     months = (
@@ -61,17 +61,17 @@ def show_predict_page():
         "Yes",
         "No"
     )
-    Months = st.number_input("Month", min_value=1, max_value=12)
-    Onset = st.number_input("Onset of Disease", min_value=0, max_value=14)
+    Months = st.number_input("What month is it?", min_value=1, max_value=12)
+    Onset = st.number_input("When was the initial onset of the patient's symptoms?", min_value=0, max_value=14)
     
-    Sex = st.selectbox("Sex", Sex)
-    Hotness_of_Body = st.selectbox("Hotness of Body", Hotness_of_Body)
-    Dehydration = st.selectbox("Dehydration", Dehydration)
-    Chestwall_Indrawing = st.selectbox("Chestwall Indrawing", Chestwall_Indrawing)
-    Vomiting = st.selectbox("Vomiting", Vomiting)
-    SickLooking = st.selectbox("SickLooking", SickLooking)
-    Age = st.slider("Age", 0, 18, 3)
-    Temperature = st.slider("Temperature", 36.0, 40.0, 36.9)
+    Sex = st.selectbox("What is the sex of the patient?", Sex)
+    Hotness_of_Body = st.selectbox("Does the patient have hotness of body?", Hotness_of_Body)
+    Dehydration = st.selectbox("Does the patient have dehydration?", Dehydration)
+    Chestwall_Indrawing = st.selectbox("Does the patient have chestwall Indrawing?", Chestwall_Indrawing)
+    Vomiting = st.selectbox(" Is the patient vomiting", Vomiting)
+    SickLooking = st.selectbox("Is the patient sicklooking?", SickLooking)
+    Age = st.slider("What is the age of the patient?", 0, 18, 3)
+    Temperature = st.slider("What is the Temperature of the patient?", 36.0, 40.0, 36.9)
     
     ok = st.button("Submit")
     if ok:
