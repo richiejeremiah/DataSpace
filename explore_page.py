@@ -11,7 +11,7 @@ df = pd.read_csv("DataSpace.csv")
 color_map_df = load_data("sheet.csv")
 
 def show_explore_page():
-    st.title("Dahboard")
+    st.title("Dashboard")
     st.markdown("DataSpace puts self-service healthcare Business Intelligence (BI) data discovery and visualization into the hands of people who can make a difference.")
     df['diagnosis'] = df['Diagnosis'].str.split(',')
     # an empty list
