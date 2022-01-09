@@ -88,4 +88,4 @@ def show_predict_page():
         A = binarizer.inverse_transform(y_pred)
         B= '\n'.join([str(x) for t in A for x in t])
         
-        st.subheader(f"Suspect: *{B}*")
+        st.subheader(f"Suspected Complication: *{B}*")
