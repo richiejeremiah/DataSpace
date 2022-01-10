@@ -2,17 +2,17 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import nltk
+import numpy as np
 
 from Helper import summary_poster, load_data
 
 output_graphs = st.container()
 
 df = pd.read_csv("DataSpace.csv")
-color_map_df = load_data("sheet.csv")
 
 def show_explore_page():
-    st.title("Dashboard")
-    st.markdown("DataSpace puts self-service healthcare Business Intelligence (BI) data discovery and visualization into the hands of people who can make a difference.")
+    color_map_df = pd.read_csv("sheet.csv")
+    st.title("Project Insights")
     df['diagnosis'] = df['Diagnosis'].str.split(',')
     # an empty list
     diseases = [] 
@@ -88,16 +88,16 @@ def show_explore_page():
     select_diagnosis_list.sort()
 
     diagnosis = st.selectbox("Select a diagnosis", select_diagnosis_list)
-    
-    #slider for year 
-    Year_list = []
-   
+  
 
     #Generating the list of year 
     df_diagnosis = df[(df.Diagnosis == diagnosis)].copy()
     year_list = df_diagnosis.Year.unique()
     year_list.sort()
-    
+      
+    #slider for year 
+    Year_list = []
+   
     year =Year_list.append(st.slider('Year of Diagnosis', 2018,2021, step = 1))
 
         #slider for age at diagnosis
@@ -110,8 +110,28 @@ def show_explore_page():
 
     age = Age_list.append(st.slider('Age at Diagnosis', 0,20, step =1))
 
+   
+    #filter for the dashboard
+    
+    gion_df=df[df['Diagnosis'].isin(select_diagnosis_list)]
+
+    major_cluster =gion_df.groupby('Age')['Sex'].count()\
+    .sort_values(ascending = False).index[0]
+    
+
     #Setting up color palette dict
     color_dict = dict(zip(color_map_df['clusters'], color_map_df['colors']))
 
-    fig = (summary_poster(df_diagnosis, color_dict))
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.subheader(f"Total Regions:{gion_df.shape[0]}")
+        
+    with col2:
+        st.subheader(f"Highest Complications: {np.max(gion_df['Diagnosis'])}")
+
+
+    #Setting up color palette dict
+    color_dict = dict(zip(color_map_df['clusters'], color_map_df['colors']))
+    fig = (summary_poster(gion_df, color_dict))
     st.write(fig)
