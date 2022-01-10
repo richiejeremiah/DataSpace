@@ -11,7 +11,7 @@ from path_imaging import show_path_page
 
 st.sidebar.image('Minimalist Initials Logo.png', width=300)
 st.sidebar.title("DataSpace")
-st.sidebar.markdown("DataSpace brings Decision Intelligence to medical diagnostics")
+st.sidebar.markdown("DataSpace Brings Decision Intelligence To Medical Diagnostics")
 
 menu = st.sidebar.selectbox(
     "",
