@@ -15,7 +15,7 @@ st.sidebar.markdown("DataSpace brings Decision Intelligence to medical diagnosti
 
 menu = st.sidebar.selectbox(
     "",
-("Decision Support","Data Explorer", "Pathology Interpretation")
+("Decision Support","Pathology Interpretation", "Data Explorer ")
 )
 
 def create_page():
