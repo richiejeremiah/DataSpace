@@ -21,7 +21,7 @@ binarizer= data['binarizer']
 def show_predict_page():
     st.title("Patient Triage")
     
-    st.write("""##### This simple tool delivers precision healthcare for pediatiric patients by asking relevant questions to assist clinicians in suspecting  diseases and their complications.""")  
+    st.write("""##### Using AI we deliver precision healthcare to patients by asking relevant questions to assist physicians in suspecting  diseases & their complications.""")  
     st.markdown('Kindly fill in your information')
    
     months = (
