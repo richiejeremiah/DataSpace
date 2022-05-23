@@ -15,16 +15,16 @@ st.sidebar.markdown("Bringing Decision Intelligence To Medical Diagnostics")
 
 menu = st.sidebar.selectbox(
     "",
-("Decision Support","Pathology Interpretation", "Data Explorer")
+("Pathology Interpretation","Decision Support", "Data Explorer")
 )
 
 def create_page():
     page = RI.create_page()
     return page
 
-if menu == 'Decision Support':
-    show_predict_page()
+if menu =='Pathology Interpretation':
+    show_path_page()
+elif menu == 'Decision Support':
+    show_predict_page()    
 elif menu =='Data Explorer':
     show_explore_page()
-elif menu =='Pathology Interpretation':
-    show_path_page()
