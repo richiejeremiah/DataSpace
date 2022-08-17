@@ -9,7 +9,7 @@ from explore_page import show_explore_page
 from path_imaging import show_path_page
 
 
-st.sidebar.image('Minimalist Initials Logo.png', width=300)
+st.sidebar.image('1.png', width=300)
 st.sidebar.title("DataSpace")
 st.sidebar.markdown("Bringing Decision Intelligence To Medical Diagnostics")
 
