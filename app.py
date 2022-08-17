@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 img = Image.open('Minimalist Initials Logo.png')
-st.set_page_config(page_title = "DataSpace",page_icon = img, layout = 'wide')
+st.set_page_config(page_title = "Augius",page_icon = img, layout = 'wide')
 
 
 from predict_page import show_predict_page
